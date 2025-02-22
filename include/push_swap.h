@@ -15,6 +15,7 @@
 
 # include <limits.h> //MIN and MAX
 # include <stdbool.h> //To use bool flag
+# include "../libft/libft.h" 
 
 typedef struct s_stack_node
 {
@@ -28,5 +29,14 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 }	t_stack_node;
 
+typedef struct s_input_node
+{
+	char	*string;
+	int		num;
+	struct s_input_node *next;
+}	t_input_node;
+
+// handle input
+t_input_node *str_to_list(char *s, char delimiter);
 
 #endif

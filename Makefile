@@ -29,10 +29,11 @@ COMMANDS_SRCS = commands/push.c \
 				commands/sort_three.c \
 				commands/swap.c
 
-#PUSH_SWAP_UTILS_DIR =
+PUSH_SWAP_UTILS_SRCS = push_swap_utils/input_string_handling.c \
+
 
 # All source files
-SRCS = $(COMMANDS_SRCS) $(PUSH_SWAP_UTILS_DIR) push_swap.c
+SRCS = $(COMMANDS_SRCS) $(PUSH_SWAP_UTILS_SRCS) push_swap.c
 
 
 # Converts SRCS file paths from .c to .o and places them inside OBJ_DIR/
@@ -41,7 +42,7 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
 
 # Build rules
 start: 
-	@make All
+	@make all
 
 # Ensures libft.a is built by running make inside the libft/ directory
 $(LIBFT):
