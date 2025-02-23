@@ -97,7 +97,7 @@ static int get_word_length(char *s, char delimiter, bool *error)
     return (i);
 }
 
-static bool built_list(t_input_node **head, char *s, char delimiter)
+static bool built_ll(t_input_node **head, char *s, char delimiter)
 {
     int len;
     t_input_node    *node;
@@ -123,7 +123,7 @@ static bool built_list(t_input_node **head, char *s, char delimiter)
     return (false);
 }
 
-void free_list(t_input_node *head) 
+void free_ll(t_input_node *head) 
 {
     t_input_node *temp;
 
@@ -136,16 +136,16 @@ void free_list(t_input_node *head)
     }
 }
 
-t_input_node *str_to_list(char *s, char delimiter)
+t_input_node *str_to_ll(char *s, char delimiter)
 {
     t_input_node *head;
     bool is_error;
 
     head = NULL;
-    is_error = built_list( &head, s, delimiter);
+    is_error = built_ll( &head, s, delimiter);
     if (is_error)
     {
-        free_list(head);
+        free_ll(head);
         return (NULL);
     }    
     return (head);

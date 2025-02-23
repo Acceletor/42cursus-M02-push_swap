@@ -32,19 +32,21 @@ int main(int argc, char **argv)
     // b = NULL;
 
     if(argc < 2 || (argc == 2 && !argv[1][0]))
+    {
+        ft_putstr_fd("Error\n", 1);
         return (1);
+    }    
     else if (argc == 2)
     {
-        list = str_to_list(argv[1], ' ');
+        list = str_to_ll(argv[1], ' ');
         if (list)
         {
             printf("Valid input: \n");
             print_list(list);
-            free_list(list);
+            free_ll(list);
         }
         else
-            printf("ERROR\n");
-        
+            ft_putstr_fd("Error\n", 1);  
     }
         
     return (0);
