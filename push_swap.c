@@ -14,45 +14,25 @@
 
 #include <stdio.h>
 
-void	print_list(int *l, int num)
+
+void print_stack(t_stack_node *stack)
 {
-    int i;
-
-    i = 0;
-	while (i < num)
-	{
-		printf("%d ", l[i]);
-		i++;
-	}
-    printf("\n");
-}
-
-int *create_int_list(t_input_node *head, int num)
-{
-    int *des;
-    int i;
-
-    i = 0;
-    des = malloc(sizeof(int) * num);
-    if (!des)
-        return (NULL);
-    while(i < num)
+    while(stack)
     {
-        des[i] = head->num;
-        head = head->next;
-        i++;
+        printf("%d ", stack->nbr);
+        stack = stack->next;
     }
-    return (des);
+    printf("\n");
 }
 
 int main(int argc, char **argv)
 {
-    // t_stack_node *a;
+    t_stack_node *a;
     // t_stack_node *b;
     t_input_node *list;
     int  input_num;
-    int  *result;
-    // a = NULL;
+    // int  *result;
+    a = NULL;
     // b = NULL;
 
     input_num = 0;
@@ -73,11 +53,8 @@ int main(int argc, char **argv)
         ft_putstr_fd("Error\n", 1); 
         return (1);
     }
-    result = create_int_list(list, input_num);
+    init_stack_a(&a, list);
     free_ll(list);
-    if (!result)
-        return (1);
-    print_list(result, input_num);
-    free(result);
+    print_stack(a);
     return (0);
 }

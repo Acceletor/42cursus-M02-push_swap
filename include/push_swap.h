@@ -36,16 +36,20 @@ typedef struct s_input_node
 	struct s_input_node *next;
 }	t_input_node;
 
-// handle input to ll
+// handle string input to ll
 t_input_node *str_to_ll(char *s, char delimiter, int *input_num);
 void free_ll(t_input_node *head);
 t_input_node *create_node(void);
 char	*ft_strndup(char *s, int len);
 bool append_node(t_input_node **head, t_input_node *new_node);
 t_input_node *new_input_node(char *s, int len);
+
 // handle argv input
 t_input_node *argv_to_ll(char **argv, int argc);
 
-
+//Stack initialize
+t_stack_node *find_last_node(t_stack_node *node);
+void append_stack_node(t_stack_node **stack, int num);
+void init_stack_a(t_stack_node **a, t_input_node *list);
 
 #endif
