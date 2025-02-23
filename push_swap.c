@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-void	ft_print_list(t_input_node *head)
+void	print_list(t_input_node *head)
 {
 	while (head)
 	{
@@ -36,7 +36,15 @@ int main(int argc, char **argv)
     else if (argc == 2)
     {
         list = str_to_list(argv[1], ' ');
-        ft_print_list(list);
+        if (list)
+        {
+            printf("Valid input: \n");
+            print_list(list);
+            free_list(list);
+        }
+        else
+            printf("ERROR\n");
+        
     }
         
     return (0);

@@ -1,10 +1,5 @@
 #include "../include/push_swap.h"
 
-// int word_count (char* s, char delimiter)
-// {
-
-// };
-
 static t_input_node *create_node(void)
 {
     t_input_node *new_node;
@@ -36,54 +31,122 @@ static char	*strndup(char *s, int len)
 	return (des);
 }
 
-static void append_node(t_input_node **head, t_input_node *new_node)
+
+static bool append_node(t_input_node **head, t_input_node *new_node)
 {
     t_input_node    *current;
 
     if (*head == NULL)
-        *head = new_node;
-    else
     {
-        current = *head;
-        while (current->next)
-            current = current->next;
-        current->next = new_node;
+        *head = new_node;
+        return (false);
+    }   
+    current = *head;
+    while (current)
+    {
+        if (current->num == new_node->num)
+        {
+            free(new_node->string);
+            free(new_node);
+            return (true);
+        }
+        if (current->next == NULL)
+            break;
+        current = current->next;
     }
+    current->next = new_node;
+    return (false);
 }
 
-static void built_list(t_input_node **head, char* s, char delimiter)
+static t_input_node *new_input_node(char *s, int len)
+{
+    char *temp;
+    t_input_node *node;
+
+    temp = strndup(s, len);
+    if (!temp)
+        return (NULL);
+    node = create_node();
+    if (!node)
+    {
+        free(temp);
+        return (NULL);
+    }
+    node->string = temp;
+    node->num = ft_atoi(temp);
+    return (node);
+}
+
+static int get_word_length(char *s, char delimiter, bool *error)
 {
     int i;
-    char *temp;
-    t_input_node    *new_node;
+
+    i = 0;
+    if (s[i] == '-' || s[i] == '+')
+        i++;
+    while (s[i] && s[i] != delimiter)
+    {
+        if(!ft_isdigit(s[i]))
+        {
+            *error = true;
+            return (0);
+        }
+        i++;
+    }
+    *error = false;
+    return (i);
+}
+
+static bool built_list(t_input_node **head, char *s, char delimiter)
+{
+    int len;
+    t_input_node    *node;
+    bool error;
 
     while(*s)
     {
-        while (*s == delimiter && *s) // skip delemiter
+        while (*s == delimiter && *s)
             s++;
         if (*s)
-        {
-            i = 0;
-            while (s[i] != delimiter && s[i]) // find word length
-                i++;
-            temp = strndup(s, i); //Extract the word
-            new_node = create_node();
-            if (!new_node)
-                return ;
-            new_node->string = temp;
-            new_node->num = ft_atoi(temp);
-            append_node(head, new_node);
-            s += i;   
+        {  
+            len = get_word_length(s, delimiter, &error);
+            if (error)
+                return (true);
+            node = new_input_node(s, len);
+            if(!node)
+                return (true);
+            if (append_node(head, node))
+                return (true);
+            s += len;   
         }
-    }   
+    }  
+    return (false);
 }
 
+void free_list(t_input_node *head) 
+{
+    t_input_node *temp;
+
+    while (head)
+    {
+        temp = head;
+        head = head->next;
+        free(temp->string); 
+        free(temp);
+    }
+}
 
 t_input_node *str_to_list(char *s, char delimiter)
 {
     t_input_node *head;
+    bool is_error;
 
     head = NULL;
-    built_list( &head, s, delimiter);
+    is_error = built_list( &head, s, delimiter);
+    if (is_error)
+    {
+        free_list(head);
+        return (NULL);
+    }    
     return (head);
 }
