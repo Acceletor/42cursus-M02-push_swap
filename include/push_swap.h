@@ -37,7 +37,7 @@ typedef struct s_input_node
 }	t_input_node;
 
 // handle input
-t_input_node *str_to_ll(char *s, char delimiter);
+t_input_node *str_to_ll(char *s, char delimiter, int *input_num);
 void free_ll(t_input_node *head);
 
 #endif

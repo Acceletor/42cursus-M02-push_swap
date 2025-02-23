@@ -28,9 +28,11 @@ int main(int argc, char **argv)
     // t_stack_node *a;
     // t_stack_node *b;
     t_input_node *list;
+    size_t  input_num;
     // a = NULL;
     // b = NULL;
 
+    input_num = 0;
     if(argc < 2 || (argc == 2 && !argv[1][0]))
     {
         ft_putstr_fd("Error\n", 1);
@@ -38,12 +40,13 @@ int main(int argc, char **argv)
     }    
     else if (argc == 2)
     {
-        list = str_to_ll(argv[1], ' ');
+        list = str_to_ll(argv[1], ' ', &input_num);
         if (list)
         {
             printf("Valid input: \n");
             print_list(list);
             free_ll(list);
+            printf("%zu\n", input_num);
         }
         else
             ft_putstr_fd("Error\n", 1);  
