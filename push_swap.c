@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     // t_stack_node *a;
     // t_stack_node *b;
     t_input_node *list;
-    size_t  input_num;
+    int  input_num;
     // a = NULL;
     // b = NULL;
 
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
             printf("Valid input: \n");
             print_list(list);
             free_ll(list);
-            printf("%zu\n", input_num);
+            printf("%d\n", input_num);
         }
         else
             ft_putstr_fd("Error\n", 1);  

@@ -29,7 +29,9 @@ COMMANDS_SRCS = commands/push.c \
 				commands/sort_three.c \
 				commands/swap.c
 
-PUSH_SWAP_UTILS_SRCS = push_swap_utils/input_string_handling.c \
+PUSH_SWAP_UTILS_SRCS = push_swap_utils/str_to_ll.c \
+					push_swap_utils/ll_utils.c
+					
 
 
 # All source files
