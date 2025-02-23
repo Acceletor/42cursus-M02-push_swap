@@ -14,13 +14,35 @@
 
 #include <stdio.h>
 
-void	print_list(t_input_node *head)
+void	print_list(int *l, int num)
 {
-	while (head)
+    int i;
+
+    i = 0;
+	while (i < num)
 	{
-		printf("String: %s, Num: %d\n", head->string, head->num);
-		head = head->next;
+		printf("%d ", l[i]);
+		i++;
 	}
+    printf("\n");
+}
+
+int *create_int_list(t_input_node *head, int num)
+{
+    int *des;
+    int i;
+
+    i = 0;
+    des = malloc(sizeof(int) * num);
+    if (!des)
+        return (NULL);
+    while(i < num)
+    {
+        des[i] = head->num;
+        head = head->next;
+        i++;
+    }
+    return (des);
 }
 
 int main(int argc, char **argv)
@@ -29,6 +51,7 @@ int main(int argc, char **argv)
     // t_stack_node *b;
     t_input_node *list;
     int  input_num;
+    int  *result;
     // a = NULL;
     // b = NULL;
 
@@ -39,31 +62,22 @@ int main(int argc, char **argv)
         return (1);
     }    
     else if (argc == 2)
-    {
         list = str_to_ll(argv[1], ' ', &input_num);
-        if (list)
-        {
-            printf("Valid input: \n");
-            print_list(list);
-            free_ll(list);
-            printf("%d\n", input_num);
-        }
-        else
-            ft_putstr_fd("Error\n", 1);  
-    }
     else
     {
         list= argv_to_ll(argv, argc);
-        if (list)
-        {
-            printf("Valid input: \n");
-            print_list(list);
-            free_ll(list);
-            printf("%d\n", argc - 1);
-        }
-        else
-            ft_putstr_fd("Error\n", 1); 
+        input_num = argc - 1;
     }
-        
+    if (!list)
+    {
+        ft_putstr_fd("Error\n", 1); 
+        return (1);
+    }
+    result = create_int_list(list, input_num);
+    free_ll(list);
+    if (!result)
+        return (1);
+    print_list(result, input_num);
+    free(result);
     return (0);
 }
