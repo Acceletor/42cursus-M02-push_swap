@@ -51,6 +51,19 @@ int main(int argc, char **argv)
         else
             ft_putstr_fd("Error\n", 1);  
     }
+    else
+    {
+        list= argv_to_ll(argv, argc);
+        if (list)
+        {
+            printf("Valid input: \n");
+            print_list(list);
+            free_ll(list);
+            printf("%d\n", argc - 1);
+        }
+        else
+            ft_putstr_fd("Error\n", 1); 
+    }
         
     return (0);
 }

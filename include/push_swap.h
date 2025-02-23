@@ -43,6 +43,9 @@ t_input_node *create_node(void);
 char	*ft_strndup(char *s, int len);
 bool append_node(t_input_node **head, t_input_node *new_node);
 t_input_node *new_input_node(char *s, int len);
+// handle argv input
+t_input_node *argv_to_ll(char **argv, int argc);
+
 
 
 #endif

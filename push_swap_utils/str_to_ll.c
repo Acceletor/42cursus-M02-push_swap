@@ -7,9 +7,14 @@ static int get_word_length(char *s, char delimiter, bool *error)
     int i;
 
     i = 0;
+    if (!s)
+    {
+        *error = true;
+        return (i);
+    }
     if (s[i] == '-' || s[i] == '+')
-        i++;
-    while (s[i] && s[i] != delimiter)
+        i++;    
+    while ((s[i] && s[i] != delimiter) || (s[i] && delimiter == 0))
     {
         if(!ft_isdigit(s[i]))
         {
@@ -28,7 +33,6 @@ static bool built_ll(t_input_node **head, char *s, char delimiter, int *input_nu
     int len;
     t_input_node    *node;
     bool error;
-
 
     while(*s)
     {
@@ -59,6 +63,45 @@ t_input_node *str_to_ll(char *s, char delimiter, int *input_num)
 
     head = NULL;
     is_error = built_ll( &head, s, delimiter , input_num);
+    if (is_error)
+    {
+        free_ll(head);
+        return (NULL);
+    }    
+    return (head);
+}
+
+static bool built_argv_ll(t_input_node **head, char **argv, int argc)
+{
+    int len;
+    t_input_node    *node;
+    bool error;
+    int i;
+
+    i = 1;
+    while (i < argc)
+    {
+        len = get_word_length(argv[i], 0, &error);
+        if (error)
+            return (true);
+        node = new_input_node(argv[i], len);
+        if(!node)
+            return (true);
+        if (append_node(head, node))
+            return (true);
+        i++;
+    }
+    return (false);
+}
+
+// to handle agrv 
+t_input_node *argv_to_ll(char **argv, int argc)
+{
+    t_input_node *head;
+    bool is_error;
+
+    head = NULL;
+    is_error = built_argv_ll(&head, argv, argc);
     if (is_error)
     {
         free_ll(head);
