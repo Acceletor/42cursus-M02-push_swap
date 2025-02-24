@@ -20,13 +20,11 @@ void append_stack_node(t_stack_node **stack, int num)
     if (!new_node)
         return ;
     new_node->next = NULL;
+    new_node->prev = NULL;
     new_node->nbr = num;
     new_node->cheapest = 0;
     if (!(*stack))
-    {
-        *stack = new_node;
-        new_node->prev = NULL;
-    }
+        *stack = new_node; 
     else
     {
         last_node = find_last_node(*stack);
