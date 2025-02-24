@@ -9,6 +9,21 @@ t_stack_node *find_last_node(t_stack_node *node)
     return (node); 
 }
 
+int stack_len(t_stack_node *stack)
+{
+    int count;
+
+    if (!stack)
+        return (0);
+    count = 0;    
+    while (stack)
+    {
+        count++;
+        stack = stack->next;
+    }
+    return (count);
+}
+
 bool stack_sorted(t_stack_node *stack)
 {
     if (!stack)

@@ -58,5 +58,6 @@ int main(int argc, char **argv)
     print_stack(a);
     if (!stack_sorted(a))
         printf("not sorted\n");
+    printf("Count:%d\n", stack_len(a));
     return (0);
 }
