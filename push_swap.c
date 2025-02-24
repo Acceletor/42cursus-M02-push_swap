@@ -56,5 +56,7 @@ int main(int argc, char **argv)
     init_stack_a(&a, list);
     free_ll(list);
     print_stack(a);
+    if (!stack_sorted(a))
+        printf("not sorted\n");
     return (0);
 }

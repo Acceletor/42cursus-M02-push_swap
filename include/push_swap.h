@@ -48,8 +48,13 @@ t_input_node *new_input_node(char *s, int len);
 t_input_node *argv_to_ll(char **argv, int argc);
 
 //Stack initialize
-t_stack_node *find_last_node(t_stack_node *node);
+
 void append_stack_node(t_stack_node **stack, int num);
 void init_stack_a(t_stack_node **a, t_input_node *list);
+
+//Stack utils
+t_stack_node *find_last_node(t_stack_node *node);
+bool stack_sorted(t_stack_node *stack);
+
 
 #endif
