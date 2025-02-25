@@ -54,9 +54,12 @@ int	main(int argc, char **argv)
 	}
 	init_stack_a(&a, list);
 	free_ll(list);
-	print_stack(a);
 	if (!stack_sorted(a))
-		printf("not sorted\n");
+	{
+        if (stack_len(a) == 2)
+            sa(&a);
+    }
+    print_stack(a);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
 	return (0);
