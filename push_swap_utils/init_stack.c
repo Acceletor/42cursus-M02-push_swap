@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/25 08:31:55 by ksuebtha          #+#    #+#             */
+/*   Updated: 2025/02/25 08:40:46 by ksuebtha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 
-void append_stack_node(t_stack_node **stack, int num)
+void	append_stack_node(t_stack_node **stack, int num)
 {
-    t_stack_node *new_node;
-    t_stack_node *last_node;
+	t_stack_node	*new_node;
+	t_stack_node	*last_node;
 
-    if (!stack)
-        return ;
-    new_node = malloc(sizeof(t_stack_node));
-    if (!new_node)
-        return ;
+	if (!stack)
+		return ;
+	new_node = malloc(sizeof(t_stack_node));
+	if (!new_node)
+		return ;
     new_node->next = NULL;
     new_node->prev = NULL;
     new_node->nbr = num;
