@@ -49,15 +49,20 @@ bool	stack_sorted(t_stack_node *stack)
 	return (true);
 }
 
-// void free_stack
-void	free_stack(t_stack_node *head)
+// nullify the pointer after freeing (to avoid accidental reuse)
+void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*temp;
+    t_stack_node    *current;
 
-	while (head)
+    if (!stack)
+        return ;
+    current = *stack;
+	while (current)
 	{
-		temp = head;
-		head = head->next;
-		free(temp);
+		temp = current->next;
+		free(current);
+		current = temp;
 	}
+    *stack = NULL;
 }
