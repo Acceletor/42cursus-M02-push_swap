@@ -60,9 +60,14 @@ bool			stack_sorted(t_stack_node *stack);
 int				stack_len(t_stack_node *stack);
 void			free_stack(t_stack_node **head);
 
-//swap
+//swap instruction
 void sa(t_stack_node **a);
 void sb(t_stack_node **b);
 void ss(t_stack_node **a, t_stack_node **b);
+
+//rotate instruction
+void ra(t_stack_node **a);
+void rb(t_stack_node **b);
+void rr(t_stack_node **a, t_stack_node **b);
 
 #endif
