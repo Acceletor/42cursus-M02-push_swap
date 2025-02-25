@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:29:36 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/02/25 08:46:56 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:21:58 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,5 @@ t_stack_node	*find_last_node(t_stack_node *node);
 bool			stack_sorted(t_stack_node *stack);
 int				stack_len(t_stack_node *stack);
 void			free_stack(t_stack_node *head);
-
 
 #endif
