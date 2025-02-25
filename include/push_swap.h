@@ -56,6 +56,6 @@ void			init_stack_a(t_stack_node **a, t_input_node *list);
 t_stack_node	*find_last_node(t_stack_node *node);
 bool			stack_sorted(t_stack_node *stack);
 int				stack_len(t_stack_node *stack);
-void			free_stack(t_stack_node *head);
+void			free_stack(t_stack_node **head);
 
 #endif
