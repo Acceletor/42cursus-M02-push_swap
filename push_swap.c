@@ -60,8 +60,15 @@ int	main(int argc, char **argv)
         // else if (stack_len(a) == 3)
         //     sort_three(&a);
     }
-    pb(&b, &a);
-    pb(&b, &a);
+    // printf("A: ");
+    // print_stack(a);
+    // printf("B: ");
+    // print_stack(b);
+    // printf("-----------\n");
+    // pb(&b,&a);
+    printf("A: ");
+    print_stack(a);
+    printf("B: ");
     print_stack(b);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);

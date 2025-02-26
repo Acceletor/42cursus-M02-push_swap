@@ -49,8 +49,10 @@ t_input_node	*new_input_node(char *s, int len);
 // handle argv input
 t_input_node	*argv_to_ll(char **argv, int argc);
 
-//Stack initialize
+//atoi fuction
+bool	atoi_edgecase(const char *str, int *num);
 
+//Stack initialize
 void			append_stack_node(t_stack_node **stack, int num);
 void			init_stack_a(t_stack_node **a, t_input_node *list);
 

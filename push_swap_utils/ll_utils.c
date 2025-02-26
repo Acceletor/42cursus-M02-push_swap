@@ -77,6 +77,8 @@ t_input_node	*new_input_node(char *s, int len)
 {
 	char			*temp;
 	t_input_node	*node;
+	int 			num;
+	bool			over_limit;
 
 	temp = ft_strndup(s, len);
 	if (!temp)
@@ -88,7 +90,14 @@ t_input_node	*new_input_node(char *s, int len)
 		return (NULL);
 	}
 	node->string = temp;
-	node->num = ft_atoi(temp);
+	over_limit = atoi_edgecase(temp, &num);
+	if (over_limit)
+		node->num = num;
+	else
+	{
+		free(temp);
+		return (NULL);
+	}
 	return (node);
 }
 

@@ -12,6 +12,13 @@
 
 #include "../include/push_swap.h"
 
+// t_stack_node *find_min(t_stack_node **a)
+// {
+//     t_stack_node *min_node;
+    
+// }
+
+
 // void sort_three_a(t_stack_node **a)
 // {
 //     t_stack_node *biggest_node;
