@@ -16,6 +16,8 @@
 
 void	print_stack(t_stack_node *stack)
 {
+	if (!stack)
+		return ;
 	while (stack)
 	{
 		printf("%d ", stack->nbr);
@@ -53,13 +55,14 @@ int	main(int argc, char **argv)
 	}
 	init_stack_a(&a, list);
 	free_ll(&list);
-	if (!stack_sorted(a))
+	if (!stack_sorted_ascend(a))
 	{
         if (stack_len(a) == 2)
             sa(&a);
-        else if (stack_len(a) == 3)
-            sort_three_a(&a);
+        // else if (stack_len(a) == 3)
+        //     sort_three_a(&a);
     }
+    sort_three_b(&a);
     print_stack(a);
     print_stack(b);
 	printf("Count:%d\n", stack_len(a));

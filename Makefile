@@ -33,7 +33,8 @@ PUSH_SWAP_UTILS_SRCS = push_swap_utils/str_to_ll.c \
 					push_swap_utils/ll_utils.c \
 					push_swap_utils/init_stack.c \
 					push_swap_utils/stack_utils.c \
-					push_swap_utils/atoi.c
+					push_swap_utils/atoi.c \
+					push_swap_utils/sort_stack.c
 					
 # All source files
 SRCS = $(COMMANDS_SRCS) $(PUSH_SWAP_UTILS_SRCS) push_swap.c

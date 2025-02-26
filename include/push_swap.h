@@ -58,9 +58,12 @@ void			init_stack_a(t_stack_node **a, t_input_node *list);
 
 //Stack utils
 t_stack_node	*find_last_node(t_stack_node *node);
-bool			stack_sorted(t_stack_node *stack);
 int				stack_len(t_stack_node *stack);
 void			free_stack(t_stack_node **head);
+
+//sort stack
+bool			stack_sorted_ascend(t_stack_node *stack);
+bool			stack_sorted_descend(t_stack_node *stack);
 
 //swap instruction
 void sa(t_stack_node **a);

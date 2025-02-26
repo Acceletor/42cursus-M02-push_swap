@@ -15,17 +15,14 @@
 t_stack_node *find_min(t_stack_node *a)
 {
     t_stack_node *min_node;
-    int min;
 
-    min = a->nbr;
+    if(!a)
+        return (NULL);
     min_node = a;
     while (a->next)
     {
-        if (min > a->nbr)
-        {
-            min = a->nbr;
+        if (min_node->nbr > a->nbr)
             min_node = a;
-        }
         a = a->next;
     }
     return (min_node);
@@ -34,45 +31,43 @@ t_stack_node *find_min(t_stack_node *a)
 t_stack_node *find_max(t_stack_node *a)
 {
     t_stack_node *max_node;
-    int max;
 
-    max = a->nbr;
+    if(!a)
+        return (NULL);
     max_node = a;
-    while (a->next)
+    while (a)
     {
-        if (max < a->nbr)
-        {
-            max = a->nbr;
+        if (max_node->nbr < a->nbr)
             max_node = a;
-        }
         a = a->next;
     }
     return (max_node);
 }
 
-
 void sort_three_a(t_stack_node **a)
 {
     t_stack_node *biggest_node;
-
+    if (stack_sorted_ascend(*a))
+        return;
     biggest_node = find_max(*a);
-    if((*a) == biggest_node)
+    if ((*a) == biggest_node)
         ra(a);
     else if ((*a)->next == biggest_node)
         rra(a);
-    if((*a)->next->nbr < (*a)->nbr)
+    if ((*a)->next->nbr < (*a)->nbr)
         sa(a);
 }
 
 void sort_three_b(t_stack_node **b)
 {
     t_stack_node *smallest_node;
-
+    if (stack_sorted_descend(*b))
+        return;
     smallest_node = find_min(*b);
-    if((*b) == smallest_node)
+    if ((*b) == smallest_node)
         rb(b);
     else if ((*b)->next == smallest_node)
         rrb(b);
-    if((*b)->next->nbr < (*b)->nbr)
+    if ((*b)->next->nbr > (*b)->nbr)
         sb(b);
 }
