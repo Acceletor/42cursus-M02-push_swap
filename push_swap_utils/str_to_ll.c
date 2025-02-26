@@ -77,7 +77,7 @@ t_input_node	*str_to_ll(char *s, char delimiter, int *input_num)
 	is_error = built_ll(&head, s, delimiter, input_num);
 	if (is_error)
 	{
-		free_ll(head);
+		free_ll(&head);
 		return (NULL);
 	}
 	return (head);
@@ -116,7 +116,7 @@ t_input_node	*argv_to_ll(char **argv, int argc)
 	is_error = built_argv_ll(&head, argv, argc);
 	if (is_error)
 	{
-		free_ll(head);
+		free_ll(&head);
 		return (NULL);
 	}
 	return (head);

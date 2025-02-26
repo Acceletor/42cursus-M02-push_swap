@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_stack_a(&a, list);
-	free_ll(list);
+	free_ll(&list);
 	if (!stack_sorted(a))
 	{
         if (stack_len(a) == 2)
@@ -60,16 +60,16 @@ int	main(int argc, char **argv)
         // else if (stack_len(a) == 3)
         //     sort_three(&a);
     }
-    // printf("A: ");
-    // print_stack(a);
-    // printf("B: ");
-    // print_stack(b);
-    // printf("-----------\n");
-    // pb(&b,&a);
     printf("A: ");
     print_stack(a);
     printf("B: ");
     print_stack(b);
+    printf("-----------\n");
+    // pb(&b,&a);
+    // printf("A: ");
+    // print_stack(a);
+    // printf("B: ");
+    // print_stack(b);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
 	return (0);

@@ -40,7 +40,7 @@ typedef struct s_input_node
 
 // handle string input to ll
 t_input_node	*str_to_ll(char *s, char delimiter, int *input_num);
-void			free_ll(t_input_node *head);
+void			free_ll(t_input_node **head);
 t_input_node	*create_node(void);
 char			*ft_strndup(char *s, int len);
 bool			append_node(t_input_node **head, t_input_node *new_node);

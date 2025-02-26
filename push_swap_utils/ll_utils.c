@@ -78,7 +78,7 @@ t_input_node	*new_input_node(char *s, int len)
 	char			*temp;
 	t_input_node	*node;
 	int 			num;
-	bool			over_limit;
+	bool			valid;
 
 	temp = ft_strndup(s, len);
 	if (!temp)
@@ -90,27 +90,28 @@ t_input_node	*new_input_node(char *s, int len)
 		return (NULL);
 	}
 	node->string = temp;
-	over_limit = atoi_edgecase(temp, &num);
-	if (over_limit)
-		node->num = num;
-	else
+	valid = atoi_edgecase(temp, &num);
+	if (!valid)
 	{
 		free(temp);
+		free(node);
 		return (NULL);
 	}
+	node->num = num;
 	return (node);
 }
 
 //Frees the entire linked list.
-void	free_ll(t_input_node *head)
+void	free_ll(t_input_node **head)
 {
 	t_input_node	*temp;
 
-	while (head)
+	while (*head)
 	{
-		temp = head;
-		head = head->next;
+		temp = *head;
+		*head = (*head)->next;
 		free(temp->string);
 		free(temp);
 	}
+	*head = NULL;
 }

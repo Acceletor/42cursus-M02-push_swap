@@ -4,28 +4,29 @@
 // TRUE mean result > INT_MAX && result < INT_MIN
 bool	atoi_edgecase(const char *str, int *num)
 {
-	char	flag;
+	int		sign;
 	long	res;
 
 	res = 0;
-	flag = '+';
+	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-		flag = *str;
+		if (*str == '-')
+			sign = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
 	{
-		res *= 10;
-		res += *str - '0';
+		res = res * 10 + (*str - '0');
+		if (sign == 1 && res > INT_MAX)
+			return (false);
+		if (sign == -1 && -res < INT_MIN)
+			return (false);
 		str++;
 	}
-	if (flag == '-')
-		return (res * -1);
-	*num = res;
-	if (res < INT_MIN || res > INT_MIN)
-		return (true);
-	return (false);
+	*num = (int)res * sign;
+	return (true);
 }
+
