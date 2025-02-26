@@ -20,9 +20,11 @@ static void rotate(t_stack_node **head)
         return ;
     last_node = find_last_node(*head);
     last_node->next = *head;
+    (*head)->prev = last_node;
+
     *head = (*head)->next;
-    last_node->next->prev = last_node;
     (*head)->prev = NULL;
+    
     last_node->next->next = NULL;
 }
 

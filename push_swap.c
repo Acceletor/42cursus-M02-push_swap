@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 	// t_stack_node *b;
 	t_input_node	*list;
 	int				input_num;
-    // int  *result;
 	a = NULL;
     // b = NULL;
 
@@ -58,7 +57,10 @@ int	main(int argc, char **argv)
 	{
         if (stack_len(a) == 2)
             sa(&a);
+        // else if (stack_len(a) == 3)
+        //     sort_three(&a);
     }
+    rra(&a);
     print_stack(a);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
