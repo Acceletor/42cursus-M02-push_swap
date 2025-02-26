@@ -75,4 +75,8 @@ void rra(t_stack_node **a);
 void rrb(t_stack_node **b);
 void rrr(t_stack_node **a, t_stack_node **b);
 
+//push instruction
+void pa(t_stack_node **a, t_stack_node **b);
+void pb(t_stack_node **b, t_stack_node **a);
+
 #endif

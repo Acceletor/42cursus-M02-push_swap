@@ -27,11 +27,11 @@ void	print_stack(t_stack_node *stack)
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	// t_stack_node *b;
+	t_stack_node *b;
 	t_input_node	*list;
 	int				input_num;
 	a = NULL;
-    // b = NULL;
+    b = NULL;
 
 	input_num = 0;
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
@@ -60,8 +60,9 @@ int	main(int argc, char **argv)
         // else if (stack_len(a) == 3)
         //     sort_three(&a);
     }
-    rra(&a);
-    print_stack(a);
+    pb(&b, &a);
+    pb(&b, &a);
+    print_stack(b);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
 	return (0);
