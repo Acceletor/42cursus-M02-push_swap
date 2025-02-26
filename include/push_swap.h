@@ -81,4 +81,8 @@ void rrr(t_stack_node **a, t_stack_node **b);
 void pa(t_stack_node **a, t_stack_node **b);
 void pb(t_stack_node **b, t_stack_node **a);
 
+//sort_three
+void sort_three_a(t_stack_node **a);
+void sort_three_b(t_stack_node **b);
+
 #endif
