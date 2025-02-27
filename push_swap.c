@@ -59,13 +59,15 @@ int	main(int argc, char **argv)
 	{
         if (stack_len(a) == 2)
             sa(&a);
-        // else if (stack_len(a) == 3)
-        //     sort_three_a(&a);
+        else if (stack_len(a) == 3)
+            sort_three_a(&a);
+		// else
+		// 	sort_stacks(&a,&b);
     }
-    sort_three_b(&a);
     print_stack(a);
     print_stack(b);
 	printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
+	free_stack(&b);
 	return (0);
 }

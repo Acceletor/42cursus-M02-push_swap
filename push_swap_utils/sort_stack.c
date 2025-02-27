@@ -25,3 +25,8 @@ bool	stack_sorted_descend(t_stack_node *stack)
 	}
 	return (true);
 }
+
+// void sort_stacks(t_stack_node **a, t_stack_node **b)
+// {
+
+// }

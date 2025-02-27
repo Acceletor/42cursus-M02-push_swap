@@ -64,6 +64,7 @@ void			free_stack(t_stack_node **head);
 //sort stack
 bool			stack_sorted_ascend(t_stack_node *stack);
 bool			stack_sorted_descend(t_stack_node *stack);
+void 			sort_stacks(t_stack_node **a, t_stack_node **b);
 
 //swap instruction
 void sa(t_stack_node **a);

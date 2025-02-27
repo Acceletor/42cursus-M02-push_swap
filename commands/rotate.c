@@ -14,18 +14,18 @@
 
 static void rotate(t_stack_node **head)
 {
+    t_stack_node *old_head;
     t_stack_node *last_node;
 
-    if(!(*head) || !(*head)->next)
+    if (!head || !(*head) || !(*head)->next)
         return ;
-    last_node = find_last_node(*head);
-    last_node->next = *head;
-    (*head)->prev = last_node;
-
-    *head = (*head)->next;
+    old_head = *head;
+    *head = old_head->next;
     (*head)->prev = NULL;
-    
-    last_node->next->next = NULL;
+    last_node = find_last_node(*head);
+    last_node->next = old_head;
+    old_head->prev = last_node;
+    old_head->next = NULL;
 }
 
 void ra(t_stack_node **a)
