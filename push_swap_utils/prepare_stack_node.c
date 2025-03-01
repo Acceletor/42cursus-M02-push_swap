@@ -27,7 +27,7 @@ static void set_target_for_a(t_stack_node *a, t_stack_node *b)
 	t_stack_node	*current_b;
     long			best_match_number;
 
-	while(a)
+	while (a)
 	{
 		best_match_number = LONG_MIN;
 		current_b = b;
@@ -67,14 +67,6 @@ static void calculate_push_costs(t_stack_node *a, t_stack_node *b)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);	
-
-		if (a->above_median == a->target_node->above_median)
-		{
-			if (a->index == a->target_node->index)
-				a->push_cost -= a->index;
-			else if (len_a - (a->index) == len_b - (a->target_node->index))
-				a->push_cost -= len_a - (a->index);
-		}	
 		a = a->next;
 	}
 }
