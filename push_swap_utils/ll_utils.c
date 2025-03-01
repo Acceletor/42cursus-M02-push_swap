@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:31:59 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/02/25 09:19:27 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/01 09:10:46 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_input_node	*new_input_node(char *s, int len)
 {
 	char			*temp;
 	t_input_node	*node;
-	int 			num;
+	int				num;
 	bool			valid;
 
 	temp = ft_strndup(s, len);

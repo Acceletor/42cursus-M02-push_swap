@@ -6,7 +6,7 @@
 #    By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 15:07:37 by ksuebtha          #+#    #+#              #
-#    Updated: 2025/02/20 17:06:20 by ksuebtha         ###   ########.fr        #
+#    Updated: 2025/03/01 08:48:58 by ksuebtha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = push_swap
 
 # Directories
 LIBFT = ./libft/libft.a
+PRINTF = ./printf/libftprintf.a
 INC= include/
 OBJ_DIR = obj/
 
@@ -52,11 +53,13 @@ start:
 $(LIBFT):
 	@make -C ./libft
 
+# $(PRINTF)
+	@make -C ./printf
 
-all: $(NAME) $(LIBFT)
+all: $(NAME) $(LIBFT) $(PRINTF)
 
 $(NAME): $(OBJ) $(LIBFT)	
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
 
 # Rule to compile object files	
 $(OBJ_DIR)%.o: %.c
@@ -66,10 +69,12 @@ $(OBJ_DIR)%.o: %.c
 clean: 
 	@$(RM) -r $(OBJ_DIR)
 	@make clean -C ./libft
+	@make clean -C ./printf
 
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) $(LIBFT)
+	@$(RM) $(PRINTF)
 
 re: fclean all
 

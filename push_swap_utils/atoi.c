@@ -1,5 +1,16 @@
-#include "../include/push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atoi.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/01 09:06:05 by ksuebtha          #+#    #+#             */
+/*   Updated: 2025/03/01 09:11:33 by ksuebtha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../include/push_swap.h"
 
 // TRUE mean result > INT_MAX && result < INT_MIN
 bool	atoi_edgecase(const char *str, int *num)
@@ -22,11 +33,10 @@ bool	atoi_edgecase(const char *str, int *num)
 		res = res * 10 + (*str - '0');
 		if (sign == 1 && res > INT_MAX)
 			return (false);
-		if (sign == -1 && -res < INT_MIN)
+		if (sign == -1 && - res < INT_MIN)
 			return (false);
 		str++;
 	}
 	*num = (int)res * sign;
 	return (true);
 }
-
