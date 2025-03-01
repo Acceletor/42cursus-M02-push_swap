@@ -59,10 +59,14 @@ void			init_stack_a(t_stack_node **a, t_input_node *list);
 t_stack_node	*find_last_node(t_stack_node *node);
 int				stack_len(t_stack_node *stack);
 void			free_stack(t_stack_node **head);
+t_stack_node	*find_min(t_stack_node *a);
+t_stack_node	*find_max(t_stack_node *a);
 
-//sort stack
+//sort stack 
 bool			stack_sorted_ascend(t_stack_node *stack);
 bool			stack_sorted_descend(t_stack_node *stack);
+t_stack_node 	*get_cheapest_node(t_stack_node *stack);
+void			current_index(t_stack_node *stack);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
 
 //swap instruction
@@ -87,5 +91,9 @@ void			pb(t_stack_node **b, t_stack_node **a);
 //sort_three
 void			sort_three_a(t_stack_node **a);
 void			sort_three_b(t_stack_node **b);
+
+//prepare and move from one stack to another
+void prepare_stack_node(t_stack_node *a, t_stack_node *b);
+
 
 #endif
