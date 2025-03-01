@@ -12,7 +12,6 @@
 
 #include "include/push_swap.h"
 
-#include <stdio.h>
 
 void	print_stack(t_stack_node *stack)
 {
@@ -20,10 +19,10 @@ void	print_stack(t_stack_node *stack)
 		return ;
 	while (stack)
 	{
-		printf("%d ", stack->nbr);
+		ft_printf("%d ", stack->nbr);
 		stack = stack->next;
 	}
-	printf ("\n");
+	ft_printf ("\n");
 }
 
 int	main(int argc, char **argv)
@@ -61,12 +60,14 @@ int	main(int argc, char **argv)
             sa(&a);
         else if (stack_len(a) == 3)
             sort_three_a(&a);
-		// else
-		// 	sort_stacks(&a,&b);
+		else
+			sort_stacks(&a,&b);
     }
+	ft_printf("A: ");
     print_stack(a);
+	ft_printf("B: ");
     print_stack(b);
-	printf("Count:%d\n", stack_len(a));
+	ft_printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

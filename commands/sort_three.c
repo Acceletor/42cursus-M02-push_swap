@@ -19,7 +19,7 @@ t_stack_node	*find_min(t_stack_node *a)
 	if (!a)
 		return (NULL);
 	min_node = a;
-	while (a->next)
+	while (a)
 	{
 		if (min_node->nbr > a->nbr)
 			min_node = a;
@@ -70,6 +70,6 @@ void	sort_three_b(t_stack_node **b)
 		rb(b);
 	else if ((*b)->next == smallest_node)
 		rrb(b);
-	if ((*b)->next->nbr > (*b)->nbr)
+	if ((*b)->nbr < (*b)->next->nbr)
 		sb(b);
 }

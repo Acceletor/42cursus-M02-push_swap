@@ -38,7 +38,16 @@ bool	stack_sorted_descend(t_stack_node *stack)
 	return (true);
 }
 
-// void sort_stacks(t_stack_node **a, t_stack_node **b)
-// {
+void sort_stacks(t_stack_node **a, t_stack_node **b)
+{
+    // int len_a;
+    // int len_b;
+    int i;
 
-// }
+    i = 0;
+    // len_a = stack_len(*a);
+    while (i++ < 3  && !stack_sorted_ascend(*a))
+        pb(b,a);
+    if (!stack_sorted_descend(*b))
+        sort_three_b(b);
+}
