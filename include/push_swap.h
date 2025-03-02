@@ -93,7 +93,8 @@ void			sort_three_a(t_stack_node **a);
 void			sort_three_b(t_stack_node **b);
 
 //prepare and move from one stack to another
-void prepare_stack_node(t_stack_node *a, t_stack_node *b);
+void prepare_a_stack_node(t_stack_node *a, t_stack_node *b);
+void prepare_b_stack_node(t_stack_node *b, t_stack_node *a);
 
 
 #endif

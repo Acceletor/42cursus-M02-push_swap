@@ -62,11 +62,11 @@ static void calculate_push_costs(t_stack_node *a, t_stack_node *b)
             a->push_cost = a->index;
         else
             a->push_cost = len_a - a->index;
-		
 		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
 		else
-			a->push_cost += len_b - (a->target_node->index);	
+			a->push_cost += len_b - (a->target_node->index);
+	
 		a = a->next;
 	}
 }
@@ -93,7 +93,7 @@ static void set_cheapest(t_stack_node *stack)
 		cheapest_node->cheapest = true;
 }
 
-void prepare_stack_node(t_stack_node *a, t_stack_node *b)
+void prepare_a_stack_node(t_stack_node *a, t_stack_node *b)
 {
     current_index(a);
     current_index(b);
