@@ -65,7 +65,6 @@ static void move_a_to_b(t_stack_node **a, t_stack_node **b)
 		rotate_both(a,b,cheapest_node);
 	else if (!(cheapest_node->above_median) && !(cheapest_node->target_node->above_median))
 		rev_rotate_both(a,b,cheapest_node);
-
 	cheap_to_top(a,cheapest_node, 'a');
 	cheap_to_top(b,cheapest_node->target_node, 'b');
 	pb(b,a);
@@ -73,18 +72,17 @@ static void move_a_to_b(t_stack_node **a, t_stack_node **b)
 
 static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
-	if (!b || !*b) // Ensure B is not empty
+	if (!b || !*b) 
         return;
-
-    if ((*b)->target_node) // Ensure the target exists
-        cheap_to_top(a, (*b)->target_node, 'a');
-
-    cheap_to_top(b, *b, 'b'); // Move B’s top element to the correct position
-    pa(a, b); // Push from B to A
+    if ((*b)->target_node) 
+	{
+		cheap_to_top(a, (*b)->target_node, 'a');
+	}
+    cheap_to_top(b, *b, 'b'); 
+    pa(a, b);
 }
 
 #include <stdio.h>
-
 void print_stack_test(t_stack_node *stack, char stack_name)
 {
     printf("Stack %c:\n", stack_name);
