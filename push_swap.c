@@ -25,6 +25,26 @@ void	print_stack(t_stack_node *stack)
 	ft_printf ("\n");
 }
 
+t_input_node	*parse_input(int argc, char **argv, int *input_num)
+{
+	t_input_node	*list;
+
+	list = NULL;
+	if (argc < 2 || (argc == 2 && !argv[1][0]))
+	{
+		ft_putstr_fd("Error\n", 1);
+		return (NULL);
+	}
+	if (argc == 2)
+		list = str_to_ll(argv[1], ' ', input_num);
+	else
+	{
+		list = argv_to_ll(argv, argc);
+		*input_num = argc - 1;
+	}
+	return (list);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -35,18 +55,7 @@ int	main(int argc, char **argv)
     b = NULL;
 
 	input_num = 0;
-	if (argc < 2 || (argc == 2 && !argv[1][0]))
-	{
-		ft_putstr_fd("Error\n", 1);
-		return (1);
-	}
-	else if (argc == 2)
-		list = str_to_ll(argv[1], ' ', &input_num);
-	else
-	{
-		list = argv_to_ll(argv, argc);
-		input_num = argc - 1;
-	}
+	list = parse_input(argc, argv, &input_num);
 	if (!list)
 	{
 		ft_putstr_fd("Error\n", 1);
@@ -55,19 +64,8 @@ int	main(int argc, char **argv)
 	init_stack_a(&a, list);
 	free_ll(&list);
 	if (!stack_sorted_ascend(a))
-	{
-        if (stack_len(a) == 2)
-            sa(&a);
-        else if (stack_len(a) == 3)
-            sort_three_a(&a);
-		else
-			sort_stacks(&a,&b);
-    }
-	ft_printf("A: ");
+		sort_stacks(&a, &b);
     print_stack(a);
-	ft_printf("B: ");
-    print_stack(b);
-	ft_printf("Count:%d\n", stack_len(a));
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

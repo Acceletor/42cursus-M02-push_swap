@@ -68,6 +68,7 @@ bool			stack_sorted_descend(t_stack_node *stack);
 t_stack_node 	*get_cheapest_node(t_stack_node *stack);
 void			current_index(t_stack_node *stack);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
+void 			cheap_to_top(t_stack_node **stack, t_stack_node *cheapest_node, char stack_name);
 
 //swap instruction
 void			sa(t_stack_node **a);

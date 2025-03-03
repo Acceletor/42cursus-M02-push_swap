@@ -66,7 +66,6 @@ static void calculate_push_costs(t_stack_node *a, t_stack_node *b)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);
-	
 		a = a->next;
 	}
 }
@@ -79,7 +78,7 @@ static void set_cheapest(t_stack_node *stack)
 	if (!stack)
 		return ;
 	cheapest_value = LONG_MAX;
-	cheapest_node = NULL;
+	cheapest_node = stack;
 	while (stack)
 	{
 		if (stack->push_cost < cheapest_value)

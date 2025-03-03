@@ -85,43 +85,72 @@ static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 
 #include <stdio.h>
 
-// void print_stack_test(t_stack_node *stack, char stack_name)
-// {
-//     printf("Stack %c:\n", stack_name);
-//     printf("------------------------------------------------------\n");
-//     printf("|  Nbr  | Index | Push Cost | Target_node | Cheapest |\n");
-//     printf("------------------------------------------------------\n");
+void print_stack_test(t_stack_node *stack, char stack_name)
+{
+    printf("Stack %c:\n", stack_name);
+    printf("------------------------------------------------------\n");
+    printf("|  Nbr  | Index | Push Cost | Target_node | Cheapest |\n");
+    printf("------------------------------------------------------\n");
 
-//     while (stack)
-//     {
-//         printf("| %5d | %5d | %9d | %12d | %8s |\n",
-//                stack->nbr,
-//                stack->index,
-//                stack->push_cost,
-//                stack->target_node ? stack->target_node->nbr : 0,
-//                stack->cheapest ? "Yes" : "No");
-//         stack = stack->next;
-//     }
-//     printf("------------------------------------------------------\n");
-// }
+    while (stack)
+    {
+        printf("| %5d | %5d | %9d | %12d | %8s |\n",
+               stack->nbr,
+               stack->index,
+               stack->push_cost,
+               stack->target_node ? stack->target_node->nbr : 0,
+               stack->cheapest ? "Yes" : "No");
+        stack = stack->next;
+    }
+    printf("------------------------------------------------------\n");
+}
+
+void sort_small(t_stack_node **a, t_stack_node **b)
+{
+    int len;
+
+    len = stack_len(*a);
+    if (len == 2)
+    {
+        if ((*a)->nbr > (*a)->next->nbr)
+            sa(a);
+    }
+    else if (len == 3)
+        sort_three_a(a);
+    else if (len == 4 || len == 5)
+    {
+		while (stack_len(*a) > 3)
+        {
+			current_index(*a);
+            cheap_to_top(a, find_min(*a), 'a');
+            pb(b, a);
+        }
+        sort_three_a(a);
+        while (*b)
+			pa(a, b);
+        cheap_to_top(a, find_min(*a), 'a');
+    }
+}
 
 
 void sort_stacks(t_stack_node **a, t_stack_node **b)
 {
     int len_a;
-	// int len_b;
 
     len_a = stack_len(*a);
-    while (stack_len(*b) < 3  && !stack_sorted_ascend(*a))
-        pb(b,a);      
+	if (len_a < 6)
+	{
+		sort_small(a, b);
+		return;
+	}
+	while (stack_len(*b) < 3  && !stack_sorted_ascend(*a))
+        pb(b,a);
     if (!stack_sorted_descend(*b))
         sort_three_b(b);
 	len_a = len_a - 3;
 	while (len_a-- > 3 && !stack_sorted_ascend(*a))
 	{
 		prepare_a_stack_node(*a,*b);
-		// print_stack_test(*a, 'A');
-		// print_stack_test(*b, 'B');
 		move_a_to_b(a,b);
 	}
 	sort_three_a(a);
