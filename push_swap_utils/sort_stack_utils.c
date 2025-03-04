@@ -39,3 +39,24 @@ t_stack_node *get_cheapest_node(t_stack_node *stack)
     }
     return (NULL);
 }
+
+void cheap_to_top(t_stack_node **stack, t_stack_node *cheapest_node, char stack_name)
+{
+	while (*stack != cheapest_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (cheapest_node->above_median)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (cheapest_node->above_median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+	}
+}

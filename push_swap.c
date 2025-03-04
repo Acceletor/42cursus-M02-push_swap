@@ -31,10 +31,7 @@ t_input_node	*parse_input(int argc, char **argv, int *input_num)
 
 	list = NULL;
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
-	{
-		// ft_putstr_fd("Error\n", 1);
 		return (NULL);
-	}
 	if (argc == 2)
 		list = str_to_ll(argv[1], ' ', input_num);
 	else
@@ -65,7 +62,7 @@ int	main(int argc, char **argv)
 	free_ll(&list);
 	if (!stack_sorted_ascend(a))
 		sort_stacks(&a, &b);
-    print_stack(a);
+    // print_stack(a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
