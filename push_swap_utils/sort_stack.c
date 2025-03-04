@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:06:14 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/01 09:06:15 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:54:53 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,10 @@ void sort_stacks(t_stack_node **a, t_stack_node **b)
 	}
 	while (len_a-- > 3  && !stack_sorted_ascend(*a))
         pb(b,a);
-    if (!stack_sorted_descend(*b))
-        sort_three_b(b);
+    if (stack_len(*b) == 3 && !stack_sorted_descend(*b))
+	{
+		sort_three_b(b);
+	}
 	// print_stack_test(*a, 'a');
 	// print_stack_test(*b, 'b');	
 	while (len_a-- > 3 && !stack_sorted_ascend(*a))
