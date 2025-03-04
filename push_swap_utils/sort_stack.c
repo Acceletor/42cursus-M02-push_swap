@@ -141,14 +141,17 @@ void sort_stacks(t_stack_node **a, t_stack_node **b)
 		sort_small(a, b);
 		return;
 	}
-	while (stack_len(*b) < 3  && !stack_sorted_ascend(*a))
+	while (len_a-- > 3  && !stack_sorted_ascend(*a))
         pb(b,a);
     if (!stack_sorted_descend(*b))
         sort_three_b(b);
-	len_a = len_a - 3;
+	// print_stack_test(*a, 'a');
+	// print_stack_test(*b, 'b');	
 	while (len_a-- > 3 && !stack_sorted_ascend(*a))
 	{
 		prepare_a_stack_node(*a,*b);
+		// print_stack_test(*a, 'a');
+		// print_stack_test(*b, 'b');
 		move_a_to_b(a,b);
 	}
 	sort_three_a(a);
