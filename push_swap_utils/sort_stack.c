@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 09:06:14 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/04 09:10:26 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/04 11:13:57 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,18 @@ static void move_a_to_b(t_stack_node **a, t_stack_node **b)
 
 static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
+	// if (!b || !*b) 
+    //     return;
+    // if ((*b)->target_node) 
+	// {
+	// 	cheap_to_top(a, (*b)->target_node, 'a');
+	// }
+    // cheap_to_top(b, *b, 'b'); 
+    // pa(a, b);
 	if (!b || !*b) 
         return;
-    if ((*b)->target_node) 
-	{
-		cheap_to_top(a, (*b)->target_node, 'a');
-	}
-    cheap_to_top(b, *b, 'b'); 
+
+	cheap_to_top(a, (*b)->target_node, 'a');
     pa(a, b);
 }
 
@@ -130,6 +135,16 @@ void sort_small(t_stack_node **a, t_stack_node **b)
     }
 }
 
+// void clear_cheapest(t_stack_node *stack)
+// {
+// 	if (!stack)
+// 		return ;
+// 	while (stack)
+// 	{
+// 		stack
+// 	}
+	
+// }
 
 void sort_stacks(t_stack_node **a, t_stack_node **b)
 {
@@ -141,16 +156,17 @@ void sort_stacks(t_stack_node **a, t_stack_node **b)
 		sort_small(a, b);
 		return;
 	}
-	while (len_a-- > 3  && !stack_sorted_ascend(*a))
+	while (stack_len(*b) < 3  && !stack_sorted_ascend(*a))
         pb(b,a);
 	// print_stack_test(*a, 'a');
 	// print_stack_test(*b, 'b');	
-    if (stack_len(*b) == 3 && !stack_sorted_descend(*b))
+    if (!stack_sorted_descend(*b))
 	{
 		sort_three_b(b);
 	}
 	// print_stack_test(*a, 'a');
 	// print_stack_test(*b, 'b');	
+	len_a = stack_len(*a);
 	while (len_a-- > 3 && !stack_sorted_ascend(*a))
 	{
 		prepare_a_stack_node(*a,*b);
@@ -159,10 +175,15 @@ void sort_stacks(t_stack_node **a, t_stack_node **b)
 		move_a_to_b(a,b);
 	}
 	sort_three_a(a);
+	// print_stack_test(*a, 'a');
+	// print_stack_test(*b, 'b');
 	while (*b)
 	{
 		prepare_b_stack_node(*b, *a);
+		// print_stack_test(*a, 'a');
+		// print_stack_test(*b, 'b');
 		move_b_to_a(a, b);
 	}
+
 	cheap_to_top(a, find_min(*a), 'a');
 }
