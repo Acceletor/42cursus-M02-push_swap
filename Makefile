@@ -6,7 +6,7 @@
 #    By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/20 15:07:37 by ksuebtha          #+#    #+#              #
-#    Updated: 2025/03/01 08:48:58 by ksuebtha         ###   ########.fr        #
+#    Updated: 2025/03/05 15:43:23 by ksuebtha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,9 @@ PUSH_SWAP_UTILS_SRCS = push_swap_utils/str_to_ll.c \
 					push_swap_utils/sort_stack.c \
 					push_swap_utils/prepare_a_stack_node.c \
 					push_swap_utils/sort_stack_utils.c \
-					push_swap_utils/prepare_b_stack_node.c 
+					push_swap_utils/prepare_b_stack_node.c \
+					push_swap_utils/prepare_stack_a_utils.c \
+					push_swap_utils/move.c
 					
 # All source files
 SRCS = $(COMMANDS_SRCS) $(PUSH_SWAP_UTILS_SRCS) push_swap.c

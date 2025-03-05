@@ -1,31 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prepare_a_stack_node.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/05 15:50:19 by ksuebtha          #+#    #+#             */
+/*   Updated: 2025/03/05 15:52:12 by ksuebtha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-void current_index(t_stack_node *stack)
+void	current_index(t_stack_node *stack)
 {
-    int i;
-    int median;
+	int	i;
+	int	median;
 
-    i = 0;
-    if (!stack)
-        return ;
-    median = stack_len(stack) / 2;
-    while (stack)
-    {
-        stack->index = i;
-        if (i <= median)
-            stack->above_median = true;
-        else   
-            stack->above_median = false;
-        stack = stack->next;
-        i++;
-    }
+	i = 0;
+	if (!stack)
+		return ;
+	median = stack_len(stack) / 2;
+	while (stack)
+	{
+		stack->index = i;
+		if (i <= median)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
+	}
 }
 
-static void set_target_for_a(t_stack_node *a, t_stack_node *b)
+static void	set_target_for_a(t_stack_node *a, t_stack_node *b)
 {
-    t_stack_node 	*target_node;
+	t_stack_node	*target_node;
 	t_stack_node	*current_b;
-    long			best_match_number;
+	long			best_match_number;
 
 	while (a)
 	{
@@ -41,7 +53,7 @@ static void set_target_for_a(t_stack_node *a, t_stack_node *b)
 			}
 			current_b = current_b->next;
 		}
-		if (best_match_number == LONG_MIN) 
+		if (best_match_number == LONG_MIN)
 			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
@@ -49,59 +61,10 @@ static void set_target_for_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-int find_max_int (int a, int b)
+static void	set_cheapest(t_stack_node *stack)
 {
-	if (a > b)
-		return (a);
-	else if (b > a)
-		return (b);
-	else
-		return (a);
-}
-
-static int	compute_push_cost(t_stack_node *node, int len_a, int len_b)
-{
-	int	cost;
-
-	if (node->above_median != node->target_node->above_median)
-	{
-		if (node->above_median)
-			cost = node->index;
-		else
-			cost = len_a - node->index;
-		if (node->target_node->above_median)
-			cost += node->target_node->index;
-		else
-			cost += len_b - node->target_node->index;
-	}
-	else
-	{
-		if (node->above_median)
-			cost = find_max_int(node->index, node->target_node->index);
-		else
-			cost = find_max_int(len_a - node->index, len_b - node->target_node->index);
-	}
-	return (cost);
-}
-
-static void calculate_push_costs(t_stack_node *a, t_stack_node *b)
-{
-	int len_a;
-	int len_b;
-
-	len_a = stack_len(a);
-	len_b = stack_len(b);
-	while (a)
-	{
-		a->push_cost = compute_push_cost(a, len_a, len_b);
-		a = a->next;
-	}
-}
-
-static void set_cheapest(t_stack_node *stack)
-{
-	long cheapest_value;
-	t_stack_node *cheapest_node;
+	long			cheapest_value;
+	t_stack_node	*cheapest_node;
 
 	if (!stack)
 		return ;
@@ -120,10 +83,10 @@ static void set_cheapest(t_stack_node *stack)
 		cheapest_node->cheapest = true;
 }
 
-void prepare_a_stack_node(t_stack_node *a, t_stack_node *b)
+void	prepare_a_stack_node(t_stack_node *a, t_stack_node *b)
 {
-    current_index(a);
-    current_index(b);
+	current_index(a);
+	current_index(b);
 	set_target_for_a(a, b);
 	calculate_push_costs(a, b);
 	set_cheapest(a);

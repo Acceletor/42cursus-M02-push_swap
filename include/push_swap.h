@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:29:36 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/01 09:11:12 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:47:57 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,12 @@ t_stack_node	*find_max(t_stack_node *a);
 //sort stack 
 bool			stack_sorted_ascend(t_stack_node *stack);
 bool			stack_sorted_descend(t_stack_node *stack);
-t_stack_node 	*get_cheapest_node(t_stack_node *stack);
+t_stack_node	*get_cheapest_node(t_stack_node *stack);
 void			current_index(t_stack_node *stack);
+void			move_a_to_b(t_stack_node **a, t_stack_node **b);
+void			move_b_to_a(t_stack_node **a, t_stack_node **b);
 void			sort_stacks(t_stack_node **a, t_stack_node **b);
-void 			cheap_to_top(t_stack_node **stack, t_stack_node *cheapest_node, char stack_name);
+void			cheap_to_top(t_stack_node **s, t_stack_node *cheap, char name);
 
 //swap instruction
 void			sa(t_stack_node **a);
@@ -94,8 +96,8 @@ void			sort_three_a(t_stack_node **a);
 void			sort_three_b(t_stack_node **b);
 
 //prepare and move from one stack to another
-void prepare_a_stack_node(t_stack_node *a, t_stack_node *b);
-void prepare_b_stack_node(t_stack_node *b, t_stack_node *a);
-
+void			calculate_push_costs(t_stack_node *a, t_stack_node *b);
+void			prepare_a_stack_node(t_stack_node *a, t_stack_node *b);
+void			prepare_b_stack_node(t_stack_node *b, t_stack_node *a);
 
 #endif

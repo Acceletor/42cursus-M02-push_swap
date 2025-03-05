@@ -6,7 +6,7 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:32:04 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/01 09:10:24 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:44:43 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	stack_len(t_stack_node *stack)
 	return (count);
 }
 
-// nullify the pointer after freeing (to avoid accidental reuse)
 void	free_stack(t_stack_node **stack)
 {
 	t_stack_node	*temp;

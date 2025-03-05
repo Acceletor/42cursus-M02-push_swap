@@ -6,12 +6,11 @@
 /*   By: ksuebtha <ksuebtha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 14:49:54 by ksuebtha          #+#    #+#             */
-/*   Updated: 2025/03/04 09:05:40 by ksuebtha         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:45:52 by ksuebtha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push_swap.h"
-
 
 void	print_stack(t_stack_node *stack)
 {
@@ -45,12 +44,12 @@ t_input_node	*parse_input(int argc, char **argv, int *input_num)
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
-	t_stack_node *b;
+	t_stack_node	*b;
 	t_input_node	*list;
 	int				input_num;
-	a = NULL;
-    b = NULL;
 
+	a = NULL;
+	b = NULL;
 	input_num = 0;
 	list = parse_input(argc, argv, &input_num);
 	if (!list)
@@ -62,7 +61,6 @@ int	main(int argc, char **argv)
 	free_ll(&list);
 	if (!stack_sorted_ascend(a))
 		sort_stacks(&a, &b);
-    // print_stack(a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
