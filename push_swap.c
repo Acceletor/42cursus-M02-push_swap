@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	free_ll(&list);
 	if (!stack_sorted_ascend(a))
 		sort_stacks(&a, &b);
-    print_stack(a);
+    // print_stack(a);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

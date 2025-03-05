@@ -59,41 +59,41 @@ int find_max_int (int a, int b)
 		return (a);
 }
 
+static int	compute_push_cost(t_stack_node *node, int len_a, int len_b)
+{
+	int	cost;
+
+	if (node->above_median != node->target_node->above_median)
+	{
+		if (node->above_median)
+			cost = node->index;
+		else
+			cost = len_a - node->index;
+		if (node->target_node->above_median)
+			cost += node->target_node->index;
+		else
+			cost += len_b - node->target_node->index;
+	}
+	else
+	{
+		if (node->above_median)
+			cost = find_max_int(node->index, node->target_node->index);
+		else
+			cost = find_max_int(len_a - node->index, len_b - node->target_node->index);
+	}
+	return (cost);
+}
 
 static void calculate_push_costs(t_stack_node *a, t_stack_node *b)
 {
 	int len_a;
 	int len_b;
-	int index_a;
-	int	index_b;
 
 	len_a = stack_len(a);
 	len_b = stack_len(b);
 	while (a)
 	{
-		if (a->above_median != a->target_node->above_median)
-		{
-			if (a->above_median)
-				a->push_cost = a->index;
-			else
-				a->push_cost = len_a - a->index;
-			if (a->target_node->above_median)
-				a->push_cost += a->target_node->index;
-			else
-				a->push_cost += len_b - (a->target_node->index);
-		}
-		else if (a->above_median && a->target_node->above_median)
-		{
-			index_a = a->index;
-			index_b = a->target_node->index;
-				a->push_cost = find_max_int(index_a, index_b);
-		}
-		else
-		{
-			index_a = len_a - a->index;
-			index_b = len_b - (a->target_node->index);
-			a->push_cost = find_max_int(index_a, index_b);
-		}
+		a->push_cost = compute_push_cost(a, len_a, len_b);
 		a = a->next;
 	}
 }
